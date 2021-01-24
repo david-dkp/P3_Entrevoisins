@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/appbar_expended_height"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        >
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginStart="18dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            tools:title="Caroline"
+            >
+
+            <ImageView
+                android:id="@+id/ivNeighbourProfile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/appbar_expended_height"
+                android:contentDescription="@string/desc_neighbour_image_profile"
+                android:scaleType="centerCrop"
+                />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/fab_margin"
+        android:contentDescription="@string/desc_favorite_neighbour"
+        app:backgroundTint="@color/white"
+        app:layout_anchor="@id/appBar"
+        app:layout_anchorGravity="bottom|end"
+        app:tint="@color/yellow"
+        tools:src="@drawable/ic_star_white_24dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey"
+        android:clipToPadding="false"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="14dp"
+            >
+
+            <android.support.design.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@color/white"
+                app:cardCornerRadius="@dimen/card_view_corner_radius"
+                app:cardElevation="@dimen/card_view_elevation"
+                >
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvNeighbourName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="15dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="2dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Caroline"
+                        />
+
+                    <View
+                        android:id="@+id/divider1"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey"
+                        app:layout_constraintTop_toBottomOf="@id/tvNeighbourName"
+                        />
+
+                    <ImageView
+                        android:id="@+id/ivLocation"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/desc_neighbour_location"
+                        android:padding="@dimen/icon_padding"
+                        android:src="@drawable/ic_location"
+                        android:tint="?attr/colorAccent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/divider1"
+                        />
+
+                    <ImageView
+                        android:id="@+id/ivCall"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/desc_neighbour_call"
+                        android:padding="@dimen/icon_padding"
+                        android:src="@drawable/ic_call"
+                        android:tint="?attr/colorAccent"
+                        app:layout_constraintLeft_toLeftOf="@id/ivLocation"
+                        app:layout_constraintTop_toBottomOf="@id/ivLocation"
+                        />
+
+                    <ImageView
+                        android:id="@+id/ivGlobe"
+                        android:layout_width="@dimen/icon_size"
+                        android:layout_height="@dimen/icon_size"
+                        android:contentDescription="@string/desc_neighbour_network"
+                        android:padding="16dp"
+                        android:src="@drawable/ic_globe"
+                        android:tint="?attr/colorAccent"
+                        app:layout_constraintLeft_toLeftOf="@id/ivLocation"
+                        app:layout_constraintTop_toBottomOf="@id/ivCall"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvNeighbourAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        android:textSize="@dimen/text_info_size"
+                        app:layout_constraintBottom_toBottomOf="@id/ivLocation"
+                        app:layout_constraintLeft_toRightOf="@id/ivLocation"
+                        app:layout_constraintTop_toTopOf="@id/ivLocation"
+                        tools:text="Saint pierre du mont à 5km"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvNeighbourCall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        android:textSize="@dimen/text_info_size"
+                        app:layout_constraintBottom_toBottomOf="@id/ivCall"
+                        app:layout_constraintLeft_toRightOf="@id/ivCall"
+                        app:layout_constraintTop_toTopOf="@id/ivCall"
+                        tools:text="+33 6 86 57 90 14"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvNeighbourSocialNetwork"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        android:textSize="@dimen/text_info_size"
+                        app:layout_constraintBottom_toBottomOf="@id/ivGlobe"
+                        app:layout_constraintLeft_toRightOf="@id/ivGlobe"
+                        app:layout_constraintTop_toTopOf="@id/ivGlobe"
+                        tools:text="www.facebook.fr/caroline"
+                        />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.design.card.MaterialCardView>
+
+            <android.support.design.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="@dimen/card_view_corner_radius"
+                app:cardElevation="@dimen/card_view_elevation"
+                >
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="14dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/tvAbout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="15dp"
+                        android:paddingTop="12dp"
+                        android:paddingBottom="2dp"
+                        android:text="@string/text_about"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
+
+                    <View
+                        android:id="@+id/divider2"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/grey"
+                        app:layout_constraintTop_toBottomOf="@id/tvAbout"
+                        />
+
+                    <TextView
+                        android:id="@+id/tvNeighbourAbout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="14dp"
+                        android:layout_marginTop="16dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvAbout"
+                        tools:text="Bonjour ! Je souhaiterais faire de la marche nordique. Pas initiée, je recherche une ou plusieurs personnes susceptibles de m'accompagner ! J'aime les jeux de cartes tels la belote et le tarot..."
+                        />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.design.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

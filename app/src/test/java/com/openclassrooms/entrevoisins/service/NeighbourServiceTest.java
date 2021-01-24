@@ -60,4 +60,11 @@ public class NeighbourServiceTest {
 
         assertFalse(service.getFavoriteNeighbours().contains(neighbour));
     }
+
+    @Test
+    public void checkIfNeighbourFavoriteWithSuccess() {
+        Neighbour neighbour = service.getNeighbours().get(0);
+        service.addNeighbourToFavorite(neighbour);
+        assertTrue(service.isNeighbourFavorite(neighbour));
+    }
 }

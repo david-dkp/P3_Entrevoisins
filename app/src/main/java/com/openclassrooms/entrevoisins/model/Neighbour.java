@@ -17,7 +17,7 @@ public class Neighbour implements Serializable {
     /** Avatar */
     private String avatarUrl;
 
-    /** Adress */
+    /** Address */
     private String address;
 
     /** Phone number */

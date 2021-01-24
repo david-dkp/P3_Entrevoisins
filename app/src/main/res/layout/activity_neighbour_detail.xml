@@ -176,7 +176,7 @@
                         app:layout_constraintBottom_toBottomOf="@id/ivGlobe"
                         app:layout_constraintLeft_toRightOf="@id/ivGlobe"
                         app:layout_constraintTop_toTopOf="@id/ivGlobe"
-                        tools:text="www.facebook.fr/caroline"
+                        android:text="www.facebook.fr/caroline"
                         />
 
                 </android.support.constraint.ConstraintLayout>

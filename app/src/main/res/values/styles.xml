@@ -18,7 +18,4 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="neighbourDetailTextView">
-        <item name="android:layout_margin">@dimen/text_neighbour_detail_margin</item>
-    </style>
 </resources>

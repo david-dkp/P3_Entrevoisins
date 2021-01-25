@@ -4,7 +4,7 @@
     <string name="tab_favorites_title">Favorites</string>
     <string name="activity_new_neighbour">New neighbour</string>
     <string name="desc_neighbour_image_profile">Neighbour Profile Image</string>
-    <string name="desc_favorite_neighbour">Add or remove neightbour from favorites</string>
+    <string name="desc_favorite_neighbour">Add or remove neighbour from favorites</string>
     <string name="desc_neighbour_location">Neighbour Location</string>
     <string name="desc_neighbour_network">Neighbour network</string>
     <string name="desc_neighbour_call">Neighbour network</string>

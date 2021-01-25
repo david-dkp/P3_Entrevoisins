@@ -89,6 +89,7 @@ public class NeighbourFragment extends Fragment {
      * Fired if the user clicks on a delete button
      * @param event
      */
+
     @Subscribe
     public void onDeleteNeighbour(DeleteNeighbourEvent event) {
         mApiService.deleteNeighbour(event.neighbour);
@@ -97,6 +98,6 @@ public class NeighbourFragment extends Fragment {
 
     @Subscribe
     public void onShowNeighbourDetail(ShowNeighbourDetailEvent event) {
-
+        NeighbourDetailActivity.navigate(getContext(), event.neighbour);
     }
 }

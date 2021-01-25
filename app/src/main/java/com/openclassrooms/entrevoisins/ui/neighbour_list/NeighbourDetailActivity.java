@@ -4,11 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,10 +52,16 @@ public class NeighbourDetailActivity extends AppCompatActivity {
     private Neighbour neighbour;
 
     private NeighbourApiService service;
+
+    private Drawable filledStar;
+    private Drawable strokeStar;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neighbour_detail);
+
+        filledStar = getDrawable(R.drawable.ic_star_white_24dp);
+        strokeStar = getDrawable(R.drawable.ic_star_border_white_24dp);
 
         service = DI.getNeighbourApiService();
 
@@ -65,6 +72,8 @@ public class NeighbourDetailActivity extends AppCompatActivity {
         neighbour = (Neighbour) getIntent().getSerializableExtra("neighbour");
 
         updateUi();
+
+
     }
 
     private void setupToolbar() {
@@ -91,8 +100,8 @@ public class NeighbourDetailActivity extends AppCompatActivity {
 
     private void updateFavorite() {
         Drawable icFavorite = service.isNeighbourFavorite(neighbour)
-                ? getDrawable(R.drawable.ic_star_white_24dp)
-                : getDrawable(R.drawable.ic_star_border_white_24dp);
+                ? filledStar
+                : strokeStar;
 
         mFabToggleFavorite.setImageDrawable(icFavorite);
     }
@@ -105,6 +114,7 @@ public class NeighbourDetailActivity extends AppCompatActivity {
 
     @OnClick(R.id.fabToggleFavorite)
     public void toggleFavorite() {
+
         if (service.isNeighbourFavorite(neighbour)) {
             service.removeNeighbourFromFavorite(neighbour);
         } else {

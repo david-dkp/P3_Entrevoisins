@@ -10,4 +10,5 @@
     <string name="desc_neighbour_call">Neighbour network</string>
     <string name="text_about">About me</string>
     <string name="text_social_network_placeholder" translatable="false">www.facebook.fr/caroline</string>
+    <string name="desc_add_neighbour">Add a new neighbour</string>
 </resources>

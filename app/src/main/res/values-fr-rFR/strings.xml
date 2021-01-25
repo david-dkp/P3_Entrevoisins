@@ -10,4 +10,5 @@
     <string name="desc_neighbour_network">Réseau social du voisin</string>
     <string name="desc_neighbour_call">Réseau social</string>
     <string name="text_about">A propos de moi</string>
+    <string name="desc_add_neighbour">Ajouter un nouveau voisin</string>
 </resources>

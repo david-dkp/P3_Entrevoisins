@@ -1,8 +1,10 @@
 
 package com.openclassrooms.entrevoisins.neighbour_list;
 
+import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -33,16 +35,18 @@ public class NeighboursListTest {
     // This is fixed
     private static int ITEMS_COUNT = 12;
 
-    private ListNeighbourActivity mActivity;
-
     @Rule
-    public ActivityTestRule<ListNeighbourActivity> mActivityRule =
-            new ActivityTestRule(ListNeighbourActivity.class);
+    public ActivityScenarioRule<ListNeighbourActivity> mActivityRule =
+            new ActivityScenarioRule<ListNeighbourActivity>(ListNeighbourActivity.class);
 
     @Before
     public void setUp() {
-        mActivity = mActivityRule.getActivity();
-        assertThat(mActivity, notNullValue());
+        mActivityRule.getScenario().onActivity(new ActivityScenario.ActivityAction<ListNeighbourActivity>() {
+            @Override
+            public void perform(ListNeighbourActivity activity) {
+                assertThat(activity, notNullValue());
+            }
+        });
     }
 
     /**

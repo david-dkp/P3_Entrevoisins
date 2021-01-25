@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Entrevoisins</string>
+    <string name="tab_neighbour_title">Mes voisins</string>
+    <string name="tab_favorites_title">Favoris</string>
+    <string name="activity_new_neighbour">Nouveau voisin</string>
+    <string name="desc_neighbour_image_profile">Image de profile du voisin</string>
+    <string name="desc_favorite_neighbour">Ajouter ou supprimer un voisin en favoris</string>
+    <string name="desc_neighbour_location">Lieu du voisin</string>
+    <string name="desc_neighbour_network">Réseau social du voisin</string>
+    <string name="desc_neighbour_call">Réseau social</string>
+    <string name="text_about">A propos de moi</string>
+</resources>

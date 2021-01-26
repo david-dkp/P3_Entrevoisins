@@ -15,7 +15,10 @@ import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourDetailActivity;
 import com.openclassrooms.entrevoisins.utils.DeleteViewAction;
+import com.openclassrooms.entrevoisins.utils.TabLayoutActions;
+import com.openclassrooms.entrevoisins.utils.TabLayoutMatchers;
 
+import org.hamcrest.Matchers;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -24,8 +27,11 @@ import org.junit.runner.RunWith;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
+import static androidx.test.espresso.matcher.ViewMatchers.hasChildCount;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.IsNull.notNullValue;
 
@@ -84,5 +90,12 @@ public class NeighboursListTest {
         Intents.init();
         onView(withId(R.id.list_neighbours)).perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
         Intents.intended(IntentMatchers.hasComponent(NeighbourDetailActivity.class.getName()));
+    }
+
+    @Test
+    public void navigate_to_favorite_tab_withSuccess() {
+        onView(withId(R.id.tabs))
+                .perform(TabLayoutActions.selectItemAction(1))
+                .check(matches(TabLayoutMatchers.matchCurrentTabTitle(R.string.tab_favorites_title)));
     }
 }

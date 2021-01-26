@@ -1,4 +1,4 @@
-package com.openclassrooms.entrevoisins.utils;
+package com.openclassrooms.entrevoisins.utils.actions;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package com.openclassrooms.entrevoisins.utils;
+package com.openclassrooms.entrevoisins.utils.matchers;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package com.openclassrooms.entrevoisins.utils;
+package com.openclassrooms.entrevoisins.utils.actions;
 
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;

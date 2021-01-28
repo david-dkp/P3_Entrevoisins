@@ -1,5 +1,6 @@
 package com.openclassrooms.entrevoisins.utils.actions;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,7 +43,7 @@ public class NeighbourRecyclerViewAction implements ViewAction {
 
         int index = adapter.getCurrentList().indexOf(this.neighbour);
 
-        RecyclerViewActions.actionOnItemAtPosition(index, this.actionToPerform);
+        RecyclerViewActions.actionOnItemAtPosition(index, this.actionToPerform).perform(uiController, view);
 
     }
 }

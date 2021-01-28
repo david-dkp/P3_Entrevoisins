@@ -46,7 +46,7 @@ public class TabLayoutActions {
                         .build();
             }
 
-            tab.select();
+            tabLayout.selectTab(tab);
         }
     }
 }

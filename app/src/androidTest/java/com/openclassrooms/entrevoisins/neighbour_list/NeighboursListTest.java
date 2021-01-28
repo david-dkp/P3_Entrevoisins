@@ -18,6 +18,7 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourDetailActivity;
 import com.openclassrooms.entrevoisins.utils.actions.DeleteViewAction;
+import com.openclassrooms.entrevoisins.utils.actions.NeighbourRecyclerViewAction;
 import com.openclassrooms.entrevoisins.utils.actions.TabLayoutActions;
 import com.openclassrooms.entrevoisins.utils.matchers.TabLayoutMatchers;
 
@@ -29,17 +30,21 @@ import org.junit.runner.RunWith;
 
 import java.util.List;
 
+import static androidx.test.espresso.Espresso.onData;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
+import static androidx.test.espresso.matcher.ViewMatchers.hasChildCount;
+import static androidx.test.espresso.matcher.ViewMatchers.hasDescendant;
 import static androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount;
+import static androidx.test.espresso.matcher.ViewMatchers.isCompletelyDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
+import static androidx.test.espresso.matcher.ViewMatchers.isSelected;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static com.openclassrooms.entrevoisins.utils.assertions.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.IsNull.notNullValue;
-
 
 
 /**
@@ -89,7 +94,7 @@ public class NeighboursListTest {
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
         // Then : the number of element is 11
         onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed()))
-                .check(withItemCount(ITEMS_COUNT-1));
+                .check(withItemCount(ITEMS_COUNT - 1));
     }
 
     @Test
@@ -114,32 +119,36 @@ public class NeighboursListTest {
 
         List<Neighbour> neighbours = DummyNeighbourGenerator.DUMMY_NEIGHBOURS;
 
-         Neighbour[] favoriteNeighbours = {
-            neighbours.get(0),
-            neighbours.get(3),
-            neighbours.get(7)
-         };
-
-        //Navigate to detail neighbour activity
-        onView(Matchers.allOf(ViewMatchers.withId(R.id.list_neighbours), isDisplayed()))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0, ViewActions.click()));
+        Neighbour[] favoriteNeighbours = {
+                neighbours.get(0),
+                neighbours.get(3),
+                neighbours.get(7)
+        };
 
         //Add random neighbour to favorite
-        for (Neighbour neighbour : favoriteNeighbours) { addNeighbourToFavorite(neighbour); }
-
-        //Leave neighbour detail activity
-        onView(isRoot()).perform(ViewActions.pressBack());
+        for (Neighbour neighbour : favoriteNeighbours) {
+            addNeighbourToFavorite(neighbour);
+        }
 
         //Navigate to favorite list tab
-        onView(withId(R.id.tabs))
-                .perform(TabLayoutActions.selectItemAction(1));
+        onView(withId(R.id.container))
+                .perform(ViewActions.swipeLeft());
 
         //Check list contains neighbours
-        //TODO
+        for (Neighbour neighbour : favoriteNeighbours) {
+            onView(Matchers.allOf(withId(R.id.list_neighbours), ViewMatchers.isDisplayingAtLeast(60)))
+                    .check(matches(Matchers.allOf(hasDescendant(withText(neighbour.getName())), hasChildCount(3))));
+        }
     }
 
     private void addNeighbourToFavorite(Neighbour neighbour) {
-        //TODO
+
+        onView(Matchers.allOf(withId(R.id.list_neighbours), isDisplayed()))
+                .perform(new NeighbourRecyclerViewAction(neighbour, ViewActions.click()));
+
+        onView(withId(R.id.fabToggleFavorite)).perform(ViewActions.click());
+
+        onView(isRoot()).perform(ViewActions.pressBack());
     }
 
 }

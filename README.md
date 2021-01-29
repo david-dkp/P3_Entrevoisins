@@ -10,7 +10,7 @@ capable de executé/compiler un projet gradle comme [Android Studio](https://dev
 ou [IntelliJ IDEA](https://www.jetbrains.com/fr-fr/idea/download/ "Télécharger IntelliJ IDEA")
 
 ### Téléchargement et Import du projet.
-1. Télécharger le projet en cliquant sur "Code" puis sur "Download ZIP" ou vous pouvez
+1. Téléchargez le projet en cliquant sur "Code" puis sur "Download ZIP" ou vous pouvez
 directement le télécharger en cliquant [ici](https://github.com/david-dkp/P3_Entrevoisins_adding_features/archive/master.zip "Télécharger le projet")
 
 2. Ouvrez le fichier ZIP téléchargé et déplacez le dossier du projet sur votre ordinateur, le choix de l'emplacement est la vôtre.

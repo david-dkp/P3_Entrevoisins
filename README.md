@@ -1,5 +1,7 @@
 # Entrevoisins
 
+Entrevoisins est une application de mise en relation entre voisins.
+
 ## Comment tester l'application ?
 
 ### Prérequis

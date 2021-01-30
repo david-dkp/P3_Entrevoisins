@@ -1,6 +1,6 @@
 # Entrevoisins
 
-Entrevoisins est une application de mise en relation entre voisins.
+Entrevoisins est une application de mise en relation des voisins. Elle permet aux personnes d'en apprendre un peu plus sur leurs voisins, de pouvoir les contacter...
 
 ## Comment tester l'application ?
 

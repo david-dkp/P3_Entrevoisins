@@ -1,14 +1,20 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,7 +28,7 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+@SuppressLint("NonConstantResourceId")
 public class NeighbourDetailActivity extends AppCompatActivity {
 
     @BindView(R.id.collapsing_toolbar)
@@ -55,13 +61,14 @@ public class NeighbourDetailActivity extends AppCompatActivity {
 
     private Drawable filledStar;
     private Drawable strokeStar;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_neighbour_detail);
 
-        filledStar = getDrawable(R.drawable.ic_star_white_24dp);
-        strokeStar = getDrawable(R.drawable.ic_star_border_white_24dp);
+        filledStar = ContextCompat.getDrawable(this, R.drawable.ic_star_white_24dp);
+        strokeStar = ContextCompat.getDrawable(this, R.drawable.ic_star_border_white_24dp);
 
         service = DI.getNeighbourApiService();
 
@@ -72,19 +79,15 @@ public class NeighbourDetailActivity extends AppCompatActivity {
         neighbour = (Neighbour) getIntent().getSerializableExtra("neighbour");
 
         updateUi();
-
-
     }
 
     private void setupToolbar() {
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     private void updateUi() {
-
         Glide.with(this)
                 .load(neighbour.getAvatarUrl())
                 .into(mIvNeighbourProfile);
@@ -114,7 +117,6 @@ public class NeighbourDetailActivity extends AppCompatActivity {
 
     @OnClick(R.id.fabToggleFavorite)
     public void toggleFavorite() {
-
         if (service.isNeighbourFavorite(neighbour)) {
             service.removeNeighbourFromFavorite(neighbour);
         } else {

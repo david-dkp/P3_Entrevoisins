@@ -3,14 +3,13 @@ package com.openclassrooms.entrevoisins.neighbour_list;
 import android.content.Intent;
 
 import androidx.test.core.app.ApplicationProvider;
-import androidx.test.espresso.assertion.ViewAssertions;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.ui.neighbour_list.NeighbourDetailActivity;
+import com.openclassrooms.entrevoisins.ui.neighbour_detail.NeighbourDetailActivity;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;

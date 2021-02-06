@@ -1,4 +1,4 @@
-package com.openclassrooms.entrevoisins.ui.neighbour_list;
+package com.openclassrooms.entrevoisins.ui.neighbour_add;
 
 import android.content.Intent;
 import com.google.android.material.button.MaterialButton;

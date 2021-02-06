@@ -44,6 +44,5 @@ public class NeighbourRecyclerViewAction implements ViewAction {
         int index = adapter.getCurrentList().indexOf(this.neighbour);
 
         RecyclerViewActions.actionOnItemAtPosition(index, this.actionToPerform).perform(uiController, view);
-
     }
 }

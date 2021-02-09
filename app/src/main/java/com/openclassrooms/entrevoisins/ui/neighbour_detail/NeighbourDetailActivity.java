@@ -1,5 +1,6 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_detail;
 
+import android.animation.Animator;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,6 +29,7 @@ import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 @SuppressLint("NonConstantResourceId")
 public class NeighbourDetailActivity extends AppCompatActivity {
 
@@ -80,6 +83,12 @@ public class NeighbourDetailActivity extends AppCompatActivity {
         updateUi();
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     private void setupToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -116,6 +125,39 @@ public class NeighbourDetailActivity extends AppCompatActivity {
 
     @OnClick(R.id.fabToggleFavorite)
     public void toggleFavorite() {
+        mFabToggleFavorite
+                .animate()
+                .setDuration(250)
+                .scaleX(1.2f)
+                .scaleY(1.2f)
+                .setListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        mFabToggleFavorite
+                                .animate()
+                                .setDuration(250)
+                                .scaleX(1.0f)
+                                .scaleY(1.0f)
+                                .setListener(null)
+                                .start();
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animation) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animation) {
+
+                    }
+                })
+                .start();
         if (service.isNeighbourFavorite(neighbour)) {
             service.removeNeighbourFromFavorite(neighbour);
         } else {
@@ -125,9 +167,4 @@ public class NeighbourDetailActivity extends AppCompatActivity {
         updateFavorite();
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 }

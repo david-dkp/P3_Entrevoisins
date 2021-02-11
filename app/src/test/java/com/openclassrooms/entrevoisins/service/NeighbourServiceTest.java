@@ -58,6 +58,6 @@ public class NeighbourServiceTest {
         service.addNeighbourToFavorite(neighbour);
         service.removeNeighbourFromFavorite(neighbour);
 
-        assertFalse(service.getFavoriteNeighbours().contains(neighbour));
+        assertFalse(service.isNeighbourFavorite(neighbour));
     }
 }

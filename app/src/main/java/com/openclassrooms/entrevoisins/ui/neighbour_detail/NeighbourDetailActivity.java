@@ -127,7 +127,7 @@ public class NeighbourDetailActivity extends AppCompatActivity {
     public void toggleFavorite() {
         mFabToggleFavorite
                 .animate()
-                .setDuration(250)
+                .setDuration(125)
                 .scaleX(1.2f)
                 .scaleY(1.2f)
                 .setListener(new Animator.AnimatorListener() {
@@ -140,7 +140,7 @@ public class NeighbourDetailActivity extends AppCompatActivity {
                     public void onAnimationEnd(Animator animation) {
                         mFabToggleFavorite
                                 .animate()
-                                .setDuration(250)
+                                .setDuration(125)
                                 .scaleX(1.0f)
                                 .scaleY(1.0f)
                                 .setListener(null)

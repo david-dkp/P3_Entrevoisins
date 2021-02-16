@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
+import com.openclassrooms.entrevoisins.events.NeighbourListChangedEvent;
 import com.openclassrooms.entrevoisins.events.ShowNeighbourDetailEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
@@ -67,16 +69,15 @@ public class NeighbourFragment extends Fragment {
     /**
      * Init the List of neighbours
      */
-    private void initList() {
+    private void refreshList() {
         mNeighbours = mApiService.getNeighbours();
         adapter.submitList(new ArrayList<Neighbour>(mNeighbours));
-
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        initList();
+        refreshList();
     }
 
     @Override
@@ -91,15 +92,10 @@ public class NeighbourFragment extends Fragment {
         EventBus.getDefault().unregister(this);
     }
 
-    /**
-     * Fired if the user clicks on a delete button
-     * @param event
-     */
-
-    @Subscribe(priority = 1)
-    public void onDeleteNeighbour(DeleteNeighbourEvent event) {
-        mApiService.deleteNeighbour(event.neighbour);
-        initList();
+    @Subscribe
+    public void onNeighbourListChanged(NeighbourListChangedEvent event) {
+        Log.d("debug", "called");
+        refreshList();
     }
 
     @Subscribe
@@ -110,6 +106,5 @@ public class NeighbourFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-
     }
 }

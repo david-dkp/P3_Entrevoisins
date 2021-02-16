@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
+import com.openclassrooms.entrevoisins.events.NeighbourListChangedEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import com.openclassrooms.entrevoisins.ui.neighbour_list.MyNeighbourRecyclerViewAdapter;
@@ -66,11 +67,9 @@ public class FavoriteNeighbourFragment extends Fragment {
     }
 
     @Subscribe
-    public void onDeleteNeighbour(DeleteNeighbourEvent event) {
+    public void onNeighbourListChanged(NeighbourListChangedEvent event) {
         refreshList();
     }
-
-
 
     public void refreshList() {
         List<Neighbour> favoriteNeighbours = neighbourApiService.getFavoriteNeighbours();

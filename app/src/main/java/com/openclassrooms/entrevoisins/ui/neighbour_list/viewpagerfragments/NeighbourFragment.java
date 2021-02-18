@@ -94,7 +94,6 @@ public class NeighbourFragment extends Fragment {
 
     @Subscribe
     public void onNeighbourListChanged(NeighbourListChangedEvent event) {
-        Log.d("debug", "called");
         refreshList();
     }
 

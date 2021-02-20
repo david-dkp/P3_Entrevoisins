@@ -14,5 +14,8 @@
     <dimen name="card_view_corner_radius">4dp</dimen>
     <dimen name="text_info_size">13sp</dimen>
     <dimen name="card_view_elevation">3dp</dimen>
+    <dimen name="neighbour_detail_card_title_padding_horizontal">15dp</dimen>
+    <dimen name="neighbour_detail_card_title_padding_top">12dp</dimen>
+    <dimen name="neighbour_detail_card_title_padding_bottom">2dp</dimen>
 
 </resources>

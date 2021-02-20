@@ -14,6 +14,7 @@ import com.openclassrooms.entrevoisins.ui.neighbour_detail.NeighbourDetailActivi
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static com.openclassrooms.entrevoisins.ui.neighbour_detail.NeighbourDetailActivity.EXTRA_NEIGHBOUR;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -36,7 +37,7 @@ public class NeighbourDetailTest {
         );
 
         intent = new Intent(ApplicationProvider.getApplicationContext(), NeighbourDetailActivity.class);
-        intent.putExtra("neighbour", neighbour);
+        intent.putExtra(EXTRA_NEIGHBOUR, neighbour);
     }
 
     @Rule

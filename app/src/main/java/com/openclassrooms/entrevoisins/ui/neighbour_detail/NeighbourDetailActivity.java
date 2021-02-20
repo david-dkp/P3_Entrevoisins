@@ -33,6 +33,8 @@ import butterknife.OnClick;
 @SuppressLint("NonConstantResourceId")
 public class NeighbourDetailActivity extends AppCompatActivity {
 
+    public static final String EXTRA_NEIGHBOUR = "EXTRA_NEIGHBOUR";
+
     @BindView(R.id.collapsing_toolbar)
     CollapsingToolbarLayout mCollapsingToolbar;
 
@@ -78,7 +80,7 @@ public class NeighbourDetailActivity extends AppCompatActivity {
 
         setupToolbar();
 
-        neighbour = (Neighbour) getIntent().getSerializableExtra("neighbour");
+        neighbour = (Neighbour) getIntent().getSerializableExtra(EXTRA_NEIGHBOUR);
 
         updateUi();
     }
@@ -119,7 +121,7 @@ public class NeighbourDetailActivity extends AppCompatActivity {
 
     public static void navigate(Context context, Neighbour neighbour) {
         Intent intent = new Intent(context, NeighbourDetailActivity.class);
-        intent.putExtra("neighbour", neighbour);
+        intent.putExtra(EXTRA_NEIGHBOUR, neighbour);
         context.startActivity(intent);
     }
 

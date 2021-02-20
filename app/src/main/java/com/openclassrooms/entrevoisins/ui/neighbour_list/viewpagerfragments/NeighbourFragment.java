@@ -97,11 +97,6 @@ public class NeighbourFragment extends Fragment {
         refreshList();
     }
 
-    @Subscribe
-    public void onShowNeighbourDetail(ShowNeighbourDetailEvent event) {
-        NeighbourDetailActivity.navigate(getContext(), event.neighbour);
-    }
-
     @Override
     public void onPause() {
         super.onPause();

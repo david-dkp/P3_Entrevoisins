@@ -13,8 +13,10 @@ import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.events.NeighbourListChangedEvent;
+import com.openclassrooms.entrevoisins.events.ShowNeighbourDetailEvent;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 import com.openclassrooms.entrevoisins.ui.neighbour_add.AddNeighbourActivity;
+import com.openclassrooms.entrevoisins.ui.neighbour_detail.NeighbourDetailActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -67,6 +69,11 @@ public class ListNeighbourActivity extends AppCompatActivity {
     public void onDeleteNeighbour(DeleteNeighbourEvent event) {
         mApiService.deleteNeighbour(event.neighbour);
         EventBus.getDefault().post(new NeighbourListChangedEvent());
+    }
+
+    @Subscribe
+    public void onShowNeighbourDetail(ShowNeighbourDetailEvent event) {
+        NeighbourDetailActivity.navigate(this, event.neighbour);
     }
 
     @OnClick(R.id.add_neighbour)

@@ -45,19 +45,29 @@ public class NeighbourServiceTest {
     }
 
     @Test
-    public void addingNeighbourToFavoritesWithSuccess() {
+    public void updatingNeighbourWithSuccess() {
         Neighbour neighbour = service.getNeighbours().get(0);
-        service.addNeighbourToFavorite(neighbour);
-        
-        assertTrue(service.isNeighbourFavorite(neighbour));
+
+        Neighbour updatedNeighbour = new Neighbour(
+                neighbour.getId(),
+                neighbour.getName(),
+                neighbour.getAvatarUrl(),
+                neighbour.getAddress(),
+                neighbour.getPhoneNumber(),
+                neighbour.getAboutMe(),
+                neighbour.isFavorite()
+        );
+
+        updatedNeighbour.setName("New name");
+        updatedNeighbour.setAboutMe("New about me");
+        updatedNeighbour.setAddress("Some new address");
+        updatedNeighbour.setFavorite(true);
+        service.updateNeighbour(updatedNeighbour);
+
+        assertTrue(service.getNeighbours().contains(updatedNeighbour));
+
+        assertTrue(service.getFavoriteNeighbours().contains(updatedNeighbour));
+
     }
 
-    @Test
-    public void deletingNeighbourFromFavoritesWithSuccess() {
-        Neighbour neighbour = service.getNeighbours().get(0);
-        service.addNeighbourToFavorite(neighbour);
-        service.removeNeighbourFromFavorite(neighbour);
-
-        assertFalse(service.isNeighbourFavorite(neighbour));
-    }
 }

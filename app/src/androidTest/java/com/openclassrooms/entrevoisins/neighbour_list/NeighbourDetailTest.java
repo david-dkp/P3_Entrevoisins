@@ -33,7 +33,8 @@ public class NeighbourDetailTest {
                 "https://i.pravatar.cc/150?img=31",
                 "79  rue Bonneterie",
                 "0123456789",
-                "About moi"
+                "About moi",
+                false
         );
 
         intent = new Intent(ApplicationProvider.getApplicationContext(), NeighbourDetailActivity.class);

@@ -112,7 +112,7 @@ public class NeighbourDetailActivity extends AppCompatActivity {
     }
 
     private void updateFavorite() {
-        Drawable icFavorite = service.isNeighbourFavorite(neighbour)
+        Drawable icFavorite = neighbour.isFavorite()
                 ? filledStar
                 : strokeStar;
 
@@ -160,12 +160,9 @@ public class NeighbourDetailActivity extends AppCompatActivity {
                     }
                 })
                 .start();
-        if (service.isNeighbourFavorite(neighbour)) {
-            service.removeNeighbourFromFavorite(neighbour);
-        } else {
-            service.addNeighbourToFavorite(neighbour);
-        }
 
+        neighbour.setFavorite(!neighbour.isFavorite());
+        service.updateNeighbour(neighbour);
         updateFavorite();
     }
 

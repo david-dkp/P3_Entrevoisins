@@ -16,10 +16,6 @@ public interface NeighbourApiService {
      */
     List<Neighbour> getNeighbours();
 
-    /**
-     * Get all favorite neighbours
-     * @return {@link List}
-     */
     List<Neighbour> getFavoriteNeighbours();
 
     /**
@@ -39,9 +35,5 @@ public interface NeighbourApiService {
      * @param neighbour
      */
 
-    void addNeighbourToFavorite(Neighbour neighbour);
-
-    void removeNeighbourFromFavorite(Neighbour neighbour);
-
-    boolean isNeighbourFavorite(Neighbour neighbour);
+    void updateNeighbour(Neighbour neighbour);
 }

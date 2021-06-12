@@ -73,6 +73,6 @@ public class FavoriteNeighbourFragment extends Fragment {
 
     public void refreshList() {
         List<Neighbour> favoriteNeighbours = neighbourApiService.getFavoriteNeighbours();
-        adapter.submitList(new ArrayList<Neighbour>(favoriteNeighbours));
+        adapter.submitList(favoriteNeighbours);
     }
 }
